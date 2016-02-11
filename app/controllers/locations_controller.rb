@@ -1,5 +1,4 @@
 class LocationsController < ApplicationController
-  include LocationsHelper
 
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
