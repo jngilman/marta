@@ -17,9 +17,17 @@
 
 <% @nearby_buses.each do |bus| %>
 
-<strong>Route: <%= bus["ROUTE"] %></strong>
-<strong>Vehicle: <%= bus["VEHICLE"] %> </strong>
-<strong>Next Stop: <%= bus["TIMEPOINT"] %> </strong>
+<strong>Route: <%= bus["ROUTE"] %></strong> <br>
+<strong>Vehicle: <%= bus["VEHICLE"] %> </strong> <br>
+<strong>Next Stop: <%= bus["TIMEPOINT"] %> </strong> <br>
+	<% if bus["ADHERENCE"].to_i > 1 %>
+ 	Your bus is running fast and smooth! It will be <%= bus["ADHERENCE"] %> minutes ahead schedule.  Better get a move <br>
+	<% elsif bus["ADHERENCE"].to_i < -1 %>
+	Your bus is running late. It will be here in <%= bus["ADHERENCE"].to_i.abs %> minutes.  You may consider Uber. <br> 
+	<% else %>
+	Bus is on time!
+	<% end %>
+
 
 <% end %>
 
